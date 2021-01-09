@@ -1,0 +1,56 @@
+things that have been completed will be marked with:  *
+
+-find out what needs to be stored in each chord object *
+
+-make a function that checks for possible chords to follow and store those chords into a new stack *
+
+
+----COMPLETED----
+
+-make a function to select which chord you want to calculate permutations off of *
+
+-continue transfering functions from header file to implementation cc file *
+
+-compile all files with g++ -Wall -std=c++11 -c ( h files and cc files ) *
+
+-compile rest with g++ *.o    *
+
+-when building possible chords provide an additional option for 7 or 9 chords based on the size of the initial chord   *
+
+-create iterate letter function *
+
+-create vector that contains corresponding new notes per chord *
+
+
+
+---- TO DO ----
+
+-perform analysis functions using notes 
+
+-create function that lines up letter with proper interval (must be called every time intervals vector changes order of elements)
+
+void Chords::UpdateNoteOrder();
+
+For example:
+
+Suppose Root = D Major     =  D   E   F#   G   A   B   C# 
+			      I  ii  iii  IV   V   vi  vii*
+
+If choose --> iii = F#min7 =  F#  G#  A    B   C#  D   E
+                              ^       ^        ^       ^
+selected notes ---->          3       5        7       2
+
+
+--BEFORE PERMUTATION--
+Intervals vector ==  {3, 5, 7, 2}
+Notes vector     ==  {F#, A, C#, E}   
+
+If intervals vector is re-arranged, re-arrange notes vector to ensure notes match proper interval assignment
+
+--AFTER  PERMUTATION--
+
+Intervals vector ==  {2, 3, 5, 7}
+Notes vector     ==  {E, F#, A, C#} 
+
+
+Find a way to add picked new chord to progression 

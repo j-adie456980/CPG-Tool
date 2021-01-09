@@ -1,0 +1,65 @@
+
+
+----Part_Writer Abstraction----
+
+Before building list of chords make the user pick a roman numeral for the chord to build off of
+
+Chord Building
+1.)Make a vector containing every possible permutation of intervals in a chord √
+2.)Make function that iterates intervals with loop around                      √
+3.)Make function that has interval repeats for larger chords                   
+-if # of unique intervals in the chord < size of the chord
+-then atleast one note has to be repeated
+num of repeats = size of chord - num of unique notes
+4.) Periodically do a quality check of each chord and eliminate the lower quality chords
+5.) For each checking phase update the score of the chord being checked
+6.) Average out the scores of every chord in the list
+7.) Keep the chords with the highest score
+
+
+Chord Quality Checking Functions
+1.)Find the total distance between intervals ( omit bass voice ) between each chord
+Example:
+-1-      -2-   D = distance = |x2-x1|
+ z1 -Dz- z2
+ y1 -Dy- y2    total = Dx+Dy+Dz . . . 
+ x1 -Dx- x2
+ B1      B2
+
+The lower the total distance = better quality
+
+score = average total - chord total distance
+
+2.)Check for notes that have a tendency to resolve to something
+The following only apply for 5 and 7 chords:
+-Look in inner voices for the following:
+7 -> 1 or 5 never 3 -->  score += 2
+4 -> 3 or 5 if it's a 7 --> chord score += 1
+
+-Look at outer voices for the following:
+7 -> 1 --> score += 2
+4 -> 3 or 5 if it's a 7 --> score += 1
+
+For any other chord with a 7th ( 4th unique voice )
+7th has to resolve down by a --> step score++
+
+
+
+3.)check for parallel fifths and parallel octaves
+- for parallel fifths:
+check if there are any fifths between intervals
+
+make diagram here ( on paper )
+
+
+
+
+perfect 5th -> dimished fifth = ok to do 
+
+check for parallel fifths --> score -= 2
+check for parallel octaves --> score -= 1
+
+
+?.)Inversions of Chords have no meaningful effect on the overall quality of the sound of the chord
+
+
